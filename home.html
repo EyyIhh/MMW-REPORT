@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Linear Inequalities & Linear Programming</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+	<style>
+		body {
+			background-color: #ffe4ef;
+			margin: 0;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			font-family: 'Quicksand', 'Poppins', Arial, sans-serif;
+			font-size: 1.08rem;
+			letter-spacing: 0.02em;
+			color: #222;
+			background-image: url('uploads/bgpattern.png');
+			background-size: 320px 320px;
+			background-repeat: repeat;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Quicksand', 'Poppins', Arial, sans-serif;
+			font-weight: 700;
+			letter-spacing: 0.04em;
+			color: #d72660;
+			text-shadow: 0 2px 8px #ffd6e6;
+		}
+		.navbar {
+			background: linear-gradient(90deg, #ffb6d5 0%, #ffe4ef 100%);
+			box-shadow: 0 2px 12px rgba(215, 38, 96, 0.08);
+			border-bottom: 2px solid #ffd6e6;
+		}
+		.navbar .navbar-brand, .navbar .nav-link, .navbar .dropdown-item {
+			color: #111 !important;
+			font-family: 'Quicksand', 'Poppins', Arial, sans-serif;
+			font-weight: 600;
+			letter-spacing: 0.03em;
+			font-size: 1.1rem;
+			transition: background 0.2s, color 0.2s;
+			border-radius: 8px;
+		}
+		.navbar .navbar-brand {
+			font-size: 1.35rem;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			color: #d72660 !important;
+			text-shadow: 0 2px 8px #ffd6e6;
+		}
+		.navbar .nav-link:hover, .navbar .dropdown-item:hover {
+			background-color: #ffd6e6 !important;
+			color: #d72660 !important;
+			box-shadow: 0 2px 8px #ffd6e6, 0 0 0 2px #d72660;
+			transform: scale(1.07);
+		}
+		.dropdown-header {
+			color: #d72660;
+			font-weight: 600;
+			font-size: 1rem;
+			letter-spacing: 0.03em;
+		}
+		.container-main {
+			max-width: 1050px;
+			margin: 0 auto;
+			padding-top: 120px;
+			padding-bottom: 40px;
+		}
+		.card, .example, .callout, .section {
+			border-radius: 1rem;
+			box-shadow: 0 2px 12px rgba(247, 182, 213, 0.15);
+			background: linear-gradient(120deg, #fff6fa 80%, #ffe4ef 100%);
+			margin-bottom: 24px;
+			padding: 18px 22px;
+			border: 2px solid #ffd6e6;
+			transition: box-shadow 0.2s;
+		}
+		.card:hover, .example:hover, .callout:hover, .section:hover {
+			box-shadow: 0 8px 32px #ffd6e6, 0 0 0 4px #d72660;
+			transform: translateY(-2px) scale(1.03);
+			border-color: #d72660;
+		}
+		.card-title {
+			font-family: 'Quicksand', 'Poppins', Arial, sans-serif;
+			font-weight: 700;
+			color: #d72660;
+			letter-spacing: 0.04em;
+			font-size: 1.25rem;
+			text-shadow: 0 2px 8px #ffd6e6;
+		}
+		.card-text {
+			font-family: 'Quicksand', 'Poppins', Arial, sans-serif;
+			font-size: 1.05rem;
+			color: #444;
+			letter-spacing: 0.02em;
+		}
+		img.diagram {
+			display: block;
+			margin: 18px auto;
+			max-width: 100%;
+			border-radius: 1rem;
+			box-shadow: 0 4px 20px #ffd6e6;
+			border: 2px solid #ffd6e6;
+			transition: box-shadow 0.2s, transform 0.2s;
+		}
+		img.diagram:hover {
+			box-shadow: 0 8px 32px #ffd6e6, 0 0 0 4px #d72660;
+			transform: scale(1.04);
+			border-color: #d72660;
+		}
+		pre.equation {
+			background: #ffe4ef;
+			padding: 12px;
+			border-radius: 10px;
+			overflow: auto;
+			font-family: 'Courier New', monospace;
+			font-size: 0.95rem;
+			color: #d72660;
+			margin: 10px 0;
+			border: 2px solid #ffd6e6;
+			transition: box-shadow 0.2s, border-color 0.2s;
+		}
+		pre.equation:hover {
+			box-shadow: 0 2px 8px #ffd6e6, 0 0 0 2px #d72660;
+			border-color: #d72660;
+		}
+		ul {
+			padding-left: 1.05rem;
+		}
+		footer {
+			margin-top: 18px;
+			color: #d72660;
+			font-size: 0.9rem;
+			text-align: center;
+		}
+		@media (max-width:980px){
+			.container-main{ padding-top: 120px; }
+			.card, .example, .callout, .section { padding: 8px 4px; }
+		}
+	</style>
+	<!-- Math rendering -->
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg shadow-sm fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="landingpage.html">
+				<img src="uploads/logo.png" alt="Logo" style="height: 80px; width: 80px; object-fit: contain;">
+				<span>LINEAR INEQUALITIES</span>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="home.html">Introduction</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="solvingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Solving
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="solvingDropdown">
+							<li><h6 class="dropdown-header">Basic Principles in Solving Inequalities</h6></li>
+							<li><a class="dropdown-item" href="solvingpage.html#addition-subtraction">Addition and Subtraction Property</a></li>
+							<li><a class="dropdown-item" href="solvingpage.html#multiplication-division">Multiplication and Division Property</a></li>
+							<li><a class="dropdown-item" href="solvingpage.html#reverse-sign">Reversing the Inequality Sign When Multiplying or Dividing by a Negative Number</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="applicationpage.html">Applications</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="quiz.html">Quiz</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="errorsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Common Errors
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="errorsDropdown">
+							<li><a class="dropdown-item" href="#">Misinterpreting the Inequality Symbol</a></li>
+							<li><a class="dropdown-item" href="#">Forgetting to Reverse the Sign When Multiplying or Dividing</a></li>
+							<li><a class="dropdown-item" href="#">Incorrect Graphical Representation</a></li>
+							<li><a class="dropdown-item" href="#">Overlooking the Context in Word Problems</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div style="height: 100px;"></div> <!-- Spacer for fixed navbar -->
+
+	<!-- Page Content -->
+	<div class="container-main">
+		<!-- INTRO -->
+		<section class="section" id="intro">
+			<h2>Introduction</h2>
+			<p>
+				Linear programming is an <em>optimization</em> technique for a system of linear constraints together with a linear objective function.
+				The objective defines the quantity to be optimized (maximize or minimize) and the goal is to find variable values that optimize that objective. 
+			</p>
+
+			<img class="diagram" src="uploads/lin1.png" alt="Feasible region diagram from Brilliant.org" />
+
+			<div class="callout">
+				<strong>Example (informal):</strong>
+				A factory produces two items (doodads and whirligigs) with cost and time constraints. Using linear programming we model constraints as linear inequalities and an objective (profit), then find the production quantities maximizing profit. 
+			</div>
+		</section>
+
+		<!-- WHEN TO USE -->
+		<section class="section" id="when-to-use">
+			<h2>When to use Linear Programming</h2>
+			<p>
+				Use linear programming when:
+			</p>
+			<ul>
+				<li>The goal is to maximize or minimize some quantity.</li>
+				<li>All constraints can be written as linear inequalities.</li>
+				<li>The objective function is linear in the decision variables.</li>
+			</ul>
+
+			<p>
+				A <strong>constraint</strong> is an inequality that defines how the values of the variables in a problem are limited. In order for linear programming techniques to work, all constraints should be linear inequalities. 
+			</p>
+
+			<div class="example">
+				<strong>Factory example (constraints):</strong>
+				<pre class="equation">
+	2x + 4y &le; 220  
+	3x + 2y &le; 150  
+	x &ge; 0  
+	y &ge; 0  
+				</pre>
+				<p>Objective (profit): <code>P = 4x + 3y</code> (maximize).</p>
+			</div>
+
+			<img class="diagram" src="uploads/lin2.png" alt="Graph of feasible region from Brilliant.org" />
+		</section>
+
+		<!-- TWO VARIABLE METHOD -->
+		<section class="section" id="two-variables">
+			<h2>Linear Programming in Two Variables</h2>
+			<p>
+				In two-variable LP problems the feasible region is a convex polygon and an optimal value of a linear objective occurs at a vertex of that polygon. 
+			</p>
+
+			<p><strong>Theorem (vertex optimality):</strong> Given a convex polygonal feasible region and a linear objective \(f(x,y)=ax+by\), any maximum or minimum occurs at one of the region’s vertices. </p>
+
+			<p>
+				Practical procedure:
+			</p>
+			<ol>
+				<li>Confirm feasible region is a convex polygon and objective is linear.</li>
+				<li>Find coordinates of each vertex of the feasible region.</li>
+				<li>Substitute each vertex into the objective function; choose the vertex giving the highest (or lowest) value.</li>
+			</ol>
+
+			<div class="example">
+				<strong>Sample feed-mix problem (summary):</strong>
+				Decision variables: kilograms of corn (c) and wheat (w).
+				Constraints and objective can be written as linear inequalities and a linear cost function. Solving vertices and evaluating the cost yields the minimizing mix. 
+			</div>
+
+			<img class="diagram" src="uploads/lin3.png" alt="Two-variable linear programming graph from Brilliant.org" />
+		</section>
+
+		<!-- SIMPLEX -->
+		<section class="section" id="simplex">
+			<h2>Simplex Algorithm (Overview)</h2>
+			<p>
+				For linear programming problems with many variables and constraints, the simplex algorithm is a systematic method to move from one vertex (basic feasible solution) of the feasible polytope to an adjacent vertex with a strictly better objective value, and repeat until an optimum is reached. 
+			</p>
+
+			<p>
+				Key ideas:
+			</p>
+			<ul>
+				<li>Convert the problem to standard form (equalities with slack variables, nonnegative variables).</li>
+				<li>Identify a basic feasible solution (often by setting nonbasic variables to zero and solving for basics).</li>
+				<li>Pivot: choose an entering variable to improve objective, and a leaving variable to maintain feasibility.</li>
+				<li>Repeat until no entering variable improves the objective (optimality condition); or detect unboundedness / special cases.</li>
+			</ul>
+		</section>
+
+		<!-- SPECIAL CASES -->
+		<section class="section" id="special-cases">
+			<h2>Special Cases of the Simplex Algorithm</h2>
+			<p>
+				While using simplex, several special cases may occur: 
+			</p>
+			<ul>
+				<li><strong>Degeneracy:</strong> A basic feasible solution has one or more basic variables equal to zero. Can cause cycling; anti-cycling rules (Bland’s rule) mitigate this.</li>
+				<li><strong>Unboundedness:</strong> The objective can be increased without bound while remaining feasible — no optimal finite solution.</li>
+				<li><strong>Infeasibility:</strong> No feasible solution exists satisfying all constraints.</li>
+				<li><strong>Multiple optimal solutions:</strong> If an objective line is parallel to a constraint side, all points on that side (including vertices) may achieve the same optimal objective value.</li>
+			</ul>
+		</section>
+
+		<!-- BIG-M METHOD -->
+		<section class="section" id="big-m">
+			<h2>Big-M Method (Summary)</h2>
+			<p>
+				When the initial system does not present an obvious basic feasible solution (for example, equations include ≥ constraints or equalities without slack variables), the Big-M method introduces artificial variables with a large penalty (M) in the objective. 
+			</p>
+			<p>
+				The artificial variables are driven to zero by the penalty M if a real feasible solution exists. After constructing the augmented system and objective, simplex is applied. If artificial variables remain positive in the final solution, the original problem is infeasible. 
+			</p>
+		</section>
+		<section class="section" id="linear-inequalities">
+			<h2>Linear Inequalities</h2>
+			<p>
+				Linear inequalities are expressions in which two linear expressions are compared using inequality symbols such as <code>&lt;</code>, <code>&gt;</code>, <code>≤</code>, <code>≥</code>, or <code>≠</code>. 
+			</p>
+		
+			<img class="diagram" src="uploads/line1.png" alt="Graph of linear inequality one variable" />
+		
+			<p>
+				The basic symbols used in linear inequalities are:
+			</p>
+			<ul>
+				<li>Not equal (≠) – e.g., <code>x ≠ 3</code></li>
+				<li>Less than (<) – e.g., <code>x + 7 < √2</code></li>
+				<li>Greater than (>) – e.g., <code>1 + 10x > 2 + 16x</code></li>
+				<li>Less than or equal to (≤) – e.g., <code>y ≤ 4</code></li>
+				<li>Greater than or equal to (≥) – e.g., <code>−3 − √3·x ≥ 10</code></li>
+			</ul>
+			
+		
+			<h3>Solving Linear Inequalities (One Variable)</h3>
+			<p>
+				The process for solving linear inequalities is the same as for linear equations, but one must pay attention to the inequality symbol (especially when multiplying/dividing by a negative number). 
+			</p>
+			<p>
+				For example:  
+				<pre class="equation">2x < 6 ⇒ x < 3</pre>
+				Or if multiplying/dividing by negative:  
+				<pre class="equation">−2x + 3 > 6 ⇒ −2x > 3 ⇒ x < −3/2</pre>
+				Notice the inequality flips when dividing by −2. 
+			</p>
+		<!-- UNDERSTANDING INTERVALS & NUMBER LINE REPRESENTATION -->
+		<section class="section" id="intervals">
+			<h3>Understanding Open and Closed Intervals</h3>
+			<p>
+				When representing the solution of a linear inequality, we often express it as an <em>interval</em>.
+				An interval shows all real numbers between two endpoints, possibly including or excluding the endpoints.
+			</p>
+		
+			<ul>
+				<li>
+					<strong>Open interval (a, b):</strong> All numbers between <code>a</code> and <code>b</code>, but not including <code>a</code> or <code>b</code>.
+					<br>Example: <code>(2, 5)</code> means <code>2 &lt; x &lt; 5</code>.
+				</li>
+				<li>
+					<strong>Closed interval [a, b]:</strong> Includes both endpoints.
+					<br>Example: <code>[2, 5]</code> means <code>2 ≤ x ≤ 5</code>.
+				</li>
+				<li>
+					<strong>Half-open (or half-closed) interval:</strong> Includes one endpoint but not the other.
+					<br>Example: <code>[2, 5)</code> means <code>2 ≤ x &lt; 5</code>.
+				</li>
+			</ul>
+		
+			<img class="diagram" src="uploads/numberline.jpg" alt="Diagram showing open and closed intervals on a number line" />
+		
+			<div class="callout">
+				<strong>Note:</strong> Parentheses <code>( )</code> denote open endpoints, while brackets <code>[ ]</code> denote closed endpoints.
+			</div>
+		
+			<h3>Representing Inequalities on a Number Line</h3>
+			<p>
+				Solutions of inequalities are often visualized on a <strong>number line</strong> for clarity.
+				A shaded line or arrow shows all numbers satisfying the inequality, while open or filled circles mark whether endpoints are included.
+			</p>
+		
+			<ul>
+				<li><strong>Open circle:</strong> Endpoint not included (<code>&lt;</code> or <code>&gt;</code>).</li>
+				<li><strong>Closed circle:</strong> Endpoint included (<code>≤</code> or <code>≥</code>).</li>
+				<li><strong>Arrow direction:</strong> Indicates where the inequality extends (left for smaller numbers, right for larger).</li>
+			</ul>
+		
+			<img class="diagram" src="uploads/ineq.jpg" alt="Number line representing inequality with open and closed circles" />
+		
+			<div class="example">
+				<strong>Example:</strong>  
+				For <code>x ≥ 3</code>, place a <em>closed circle</em> at <code>3</code> and shade the line to the right.  
+				For <code>x &lt; −2</code>, place an <em>open circle</em> at <code>−2</code> and shade to the left.
+			</div>
+		
+			<p>
+				These visualizations make it easier to understand ranges of values that satisfy inequalities and prepare the foundation for understanding solution regions in linear programming problems.
+			</p>
+		</section>
+		
+			<h3>Graphing Linear Inequalities (Two Variables)</h3>
+			<p>
+				For a linear inequality in two variables (e.g., <code>Ax + By > C</code>), the solution set is a region (half‐plane) rather than a single line. 
+			</p>
+			<img class="diagram" src="uploads/line2.png" alt="Graph of linear inequality two variables shaded region" />
+			<p>
+				Key steps:
+			</p>
+			<ul>
+				<li>Rewrite as <code>y = …</code> (if needed) to identify the boundary line.</li>
+				<li>Plot the line: Use a **solid line** if the inequality is ≤ or ≥; use a **dashed line** if it is < or >.</li>
+				<li>Test a point not on the line (often the origin <code>(0,0)</code>) to see which side of the line satisfies the inequality; then shade that half‐plane.</li>
+			</ul>
+		
+			<h3>Examples of Linear Inequalities in Two Variables</h3>
+			<p>Here are some typical forms: </p>
+			<pre class="equation">
+		  2x < 3y + 2  
+		  7x − 2y > 8  
+		  3x + 4y + 3 ≤ 2y − 5  
+		  x + y ≥ 0
+			</pre>
+		
+			
+		
+		</section>
+		
+		<section class="section" id="comparison-and-applications">
+			<h2>Difference, Importance & Real-Life Examples</h2>
+		
+			<h3>Difference – Linear Programming vs Linear Inequalities</h3>
+			<p>
+				While both linear programming and linear inequalities deal with linear expressions and constraints, they differ in key ways:
+			</p>
+			<ul>
+				<li>
+					<strong>Focus:</strong> Linear inequalities focus on describing a region of solutions satisfying one or more inequality constraints (e.g., “\(x + 2y ≤ 10\)”). 
+					Linear programming uses inequalities (and/or equalities) plus an objective function (maximize or minimize) to find the *best* solution among those feasible ones.
+				</li>
+				<li>
+					<strong>Solution set:</strong> With linear inequalities, the solution is typically a region (in 2 variables a half-plane or polygon) of all points satisfying the inequalities. : 
+					In linear programming, you look for a particular optimal point (often a vertex of that feasible region) that maximizes or minimizes the objective.
+				</li>
+				<li>
+					<strong>Objective:</strong> Linear inequalities often do not include an objective to optimize — they simply specify constraints. Linear programming always includes an objective function (e.g., profit, cost).  
+				</li>
+				<li>
+					<strong>Graphs:</strong> Graphing a linear inequality involves shading a region. 
+					Graphing a linear programming problem uses that same region but then overlays “level” lines of objective function and finds where it touches the region’s boundary.
+				</li>
+			</ul>
+		
+			<img class="diagram" src="uploads/dif.jpg" alt="Diagram comparing linear programming and linear inequalities" />
+		
+			<h3>Importance</h3>
+			<p>
+				Understanding both topics is important because:
+			</p>
+			<ul>
+				<li>
+					Linear inequalities provide the language and structure of constraints — without them you cannot define feasible regions or restrictions in real world models.
+				</li>
+				<li>
+					Linear programming builds on those constraints to help decision-makers optimize resources (time, money, materials) under those constraints.
+				</li>
+				<li>
+					Many real life problems are best framed first as inequalities (“you cannot exceed budget”, “you must meet minimum production”) and then as programming problems (“maximize profit under budget and production constraints”).
+				</li>
+			</ul>
+		
+			<h3>Real‐Life Examples</h3>
+			<p>Here are some concrete applications:</p>
+			<ul>
+				<li>
+					<strong>Diet planning:</strong> Suppose you must ensure daily intake of certain nutrients (inequalities) and minimize cost while meeting those constraints → linear programming.
+				</li>
+				<li>
+					<strong>Resource allocation for factories:</strong> You may have labor hours and machine hours constraints (inequalities) and you want to maximize output or minimize cost → linear programming.
+				</li>
+				<li>
+					<strong>Budget limits:</strong> You have income and expenses must not exceed income (inequality) so you find acceptable expenditure combinations.
+				</li>
+				<li>
+					<strong>Shipping and logistics:</strong> Limiting weights, volumes, capacities (inequalities) and choosing shipping mix to minimize cost (linear programming).
+				</li>
+			</ul>
+		
+			<img class="diagram" src="uploads/real.jpg" alt="Real life application diagram of linear programming" />
+		
+		</section>
+		
+		
+	</div>
+	<!-- Bootstrap JS Bundle -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Linear Inequalities Quiz</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+	<style>
+		body {
+			background-color: #ffe4ef;
+			margin: 0;
+			min-height: 100vh;
+			font-family: 'Quicksand', 'Poppins', Arial, sans-serif;
+			font-size: 1.08rem;
+			letter-spacing: 0.02em;
+			color: #222;
+			background-image: url('uploads/bgpattern.png');
+			background-size: 320px 320px;
+			background-repeat: repeat;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Quicksand', 'Poppins', Arial, sans-serif;
+			font-weight: 700;
+			letter-spacing: 0.04em;
+			color: #d72660;
+			text-shadow: 0 2px 8px #ffd6e6;
+		}
+		.navbar {
+			background: linear-gradient(90deg, #ffb6d5 0%, #ffe4ef 100%);
+			box-shadow: 0 2px 12px rgba(215, 38, 96, 0.08);
+			border-bottom: 2px solid #ffd6e6;
+		}
+		.navbar .navbar-brand, .navbar .nav-link, .navbar .dropdown-item {
+			color: #111 !important;
+			font-family: 'Quicksand', 'Poppins', Arial, sans-serif;
+			font-weight: 600;
+			letter-spacing: 0.03em;
+			font-size: 1.1rem;
+			transition: background 0.2s, color 0.2s;
+			border-radius: 8px;
+		}
+		.navbar .navbar-brand {
+			font-size: 1.35rem;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			color: #d72660 !important;
+			text-shadow: 0 2px 8px #ffd6e6;
+		}
+		.navbar .nav-link:hover, .navbar .dropdown-item:hover {
+			background-color: #ffd6e6 !important;
+			color: #d72660 !important;
+			box-shadow: 0 2px 8px #ffd6e6, 0 0 0 2px #d72660;
+			transform: scale(1.07);
+		}
+		.dropdown-header {
+			color: #d72660;
+			font-weight: 600;
+			font-size: 1rem;
+			letter-spacing: 0.03em;
+		}
+		.container-quiz {
+			max-width: 900px;
+			margin: 0 auto;
+			padding-top: 120px;
+			padding-bottom: 40px;
+		}
+		.quiz-card, .result {
+			border-radius: 1rem;
+			box-shadow: 0 2px 12px rgba(247, 182, 213, 0.15);
+			background: linear-gradient(120deg, #fff6fa 80%, #ffe4ef 100%);
+			margin-bottom: 24px;
+			padding: 18px 22px;
+			transition: box-shadow 0.2s;
+			border: 2px solid #ffd6e6;
+		}
+		.quiz-card:hover {
+			box-shadow: 0 8px 32px #ffd6e6, 0 0 0 4px #d72660;
+			transform: translateY(-2px) scale(1.03);
+			border-color: #d72660;
+		}
+		.logo {
+			width: 72px;
+			height: 72px;
+			border-radius: 16px;
+			background: linear-gradient(135deg,#6ee7b7,#60a5fa);
+			display: grid;
+			place-items: center;
+			font-weight: 700;
+			color: #012318;
+			box-shadow: 0 6px 30px rgba(0,0,0,0.12);
+			font-family: 'Courier New', monospace;
+			font-size: 2rem;
+		}
+		button {
+			background: #d72660;
+			color: #fff;
+			font-weight: 600;
+			padding: 10px 18px;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+			font-size: 1rem;
+			transition: all 0.25s ease;
+			margin-top: 10px;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			box-shadow: 0 2px 8px #ffd6e6;
+		}
+		button:hover {
+			background: #b71c46;
+			transform: translateY(-1px) scale(1.07);
+			box-shadow: 0 8px 32px #ffd6e6, 0 0 0 4px #d72660;
+		}
+		.result {
+			text-align: center;
+			color: #d72660;
+			font-weight: 600;
+			font-size: 1.1rem;
+			display: none;
+			background: #fff6fa;
+			border-radius: 1rem;
+			box-shadow: 0 2px 12px #ffd6e6;
+			border: 2px solid #ffd6e6;
+		}
+		footer {
+			text-align: center;
+			margin-top: 30px;
+			color: #d72660;
+			font-size: 0.9rem;
+		}
+		.identification {
+			background: linear-gradient(120deg, #fff6fa 80%, #ffe4ef 100%);
+			border-radius: 1rem;
+			box-shadow: 0 2px 12px rgba(247, 182, 213, 0.15);
+			padding: 18px 22px;
+			margin-bottom: 24px;
+			border: 2px solid #ffd6e6;
+		}
+		.identification label {
+			font-weight: 600;
+			color: #d72660;
+			margin-bottom: 6px;
+		}
+		.identification input {
+			width: 100%;
+			padding: 8px;
+			border-radius: 8px;
+			border: 1px solid #ffd6e6;
+			margin-bottom: 12px;
+			font-size: 1rem;
+			background: #fff;
+			color: #222;
+			box-shadow: 0 2px 8px #ffd6e6;
+			transition: box-shadow 0.2s, border-color 0.2s;
+		}
+		.identification input:focus {
+			box-shadow: 0 2px 8px #ffd6e6, 0 0 0 2px #d72660;
+			border-color: #d72660;
+		}
+		label {
+			display: block;
+			margin: 6px 0;
+			cursor: pointer;
+			font-size: 1.05rem;
+			color: #222;
+			padding-left: 2px;
+		}
+		input[type="radio"] {
+			accent-color: #d72660;
+			margin-right: 8px;
+		}
+		.quiz-card h3 {
+			color: #d72660;
+			font-size: 1.08rem;
+			margin-bottom: 10px;
+			font-weight: 700;
+			text-shadow: 0 2px 8px #ffd6e6;
+		}
+		@media (max-width:980px){
+			.container-quiz{ padding-top: 100px; }
+			.quiz-card, .identification { padding: 12px 8px; }
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg shadow-sm fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="landingpage.html">
+				<img src="uploads/logo.png" alt="Logo" style="height: 80px; width: 80px; object-fit: contain;">
+				<span>LINEAR INEQUALITIES</span>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="home.html">Introduction</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="solvingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Solving
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="solvingDropdown">
+							<li><h6 class="dropdown-header">Basic Principles in Solving Inequalities</h6></li>
+							<li><a class="dropdown-item" href="solvingpage.html#addition-subtraction">Addition and Subtraction Property</a></li>
+							<li><a class="dropdown-item" href="solvingpage.html#multiplication-division">Multiplication and Division Property</a></li>
+							<li><a class="dropdown-item" href="solvingpage.html#reverse-sign">Reversing the Inequality Sign When Multiplying or Dividing by a Negative Number</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="applicationpage.html">Applications</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="quiz.html">Quiz</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="errorsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Common Errors
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="errorsDropdown">
+							<li><a class="dropdown-item" href="commonerror.html#a">Misinterpreting the Inequality Symbol</a></li>
+							<li><a class="dropdown-item" href="commonerror.html#b">Forgetting to Reverse the Sign When Multiplying or Dividing by a Negative</a></li>
+							<li><a class="dropdown-item" href="commonerror.html#c">Incorrect Graphical Representation</a></li>
+							<li><a class="dropdown-item" href="commonerror.html#d">Overlooking the Context in Word Problems</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div style="height: 100px;"></div> <!-- Spacer for fixed navbar -->
+
+	<div class="container-quiz">
+		<header class="mb-4 d-flex align-items-center gap-3">
+			<div class="logo">QZ</div>
+			<div>
+				<h1>Linear Inequalities Quiz</h1>
+				<p style="color:#d72660;font-size:0.98rem;">Test your understanding — from basics to advanced concepts.</p>
+			</div>
+		</header>
+
+		<form id="quizForm">
+			<!-- Identification Section -->
+			<div class="identification">
+				<h3>Identification (Write your answer)</h3>
+				<label for="id1">1. The region that satisfies all constraints in a linear inequality problem.</label>
+				<input type="text" name="id1" id="id1">
+				<label for="id2">2. The process of finding the range of values that make an inequality true.</label>
+				<input type="text" name="id2" id="id2">
+				<label for="id3">3. The property that allows you to add or subtract the same value from both sides of an inequality.</label>
+				<input type="text" name="id3" id="id3">
+				<label for="id4">4. The point where two lines intersect on a graph.</label>
+				<input type="text" name="id4" id="id4">
+				<label for="id5">5. The symbol used to represent "less than or equal to".</label>
+				<input type="text" name="id5" id="id5">
+			</div>
+
+			<!-- Multiple Choice Questions -->
+			<div class="quiz-card">
+				<h3>1. Which of the following is a linear inequality?</h3>
+				<label><input type="radio" name="q1" value="A">A. 2x + 3 = 5</label>
+				<label><input type="radio" name="q1" value="B">B. 4x - 1 ≥ 7</label>
+				<label><input type="radio" name="q1" value="C">C. x² + 2x &lt; 4</label>
+				<label><input type="radio" name="q1" value="D">D. y = 3x + 1</label>
+			</div>
+			<div class="quiz-card">
+				<h3>2. In an open interval (a, b), which points are included?</h3>
+				<label><input type="radio" name="q2" value="A">A. Both a and b</label>
+				<label><input type="radio" name="q2" value="B">B. Only a</label>
+				<label><input type="radio" name="q2" value="C">C. Only b</label>
+				<label><input type="radio" name="q2" value="D">D. Neither a nor b</label>
+			</div>
+			<div class="quiz-card">
+				<h3>3. What does a closed circle on a number line indicate?</h3>
+				<label><input type="radio" name="q3" value="A">A. The endpoint is excluded</label>
+				<label><input type="radio" name="q3" value="B">B. The endpoint is included</label>
+				<label><input type="radio" name="q3" value="C">C. The inequality is strict</label>
+				<label><input type="radio" name="q3" value="D">D. The interval is infinite</label>
+			</div>
+			<div class="quiz-card">
+				<h3>4. Which inequality sign reverses when both sides are multiplied by a negative number?</h3>
+				<label><input type="radio" name="q4" value="A">A. It stays the same</label>
+				<label><input type="radio" name="q4" value="B">B. It flips direction</label>
+				<label><input type="radio" name="q4" value="C">C. It disappears</label>
+				<label><input type="radio" name="q4" value="D">D. It turns into equality</label>
+			</div>
+			<div class="quiz-card">
+				<h3>5. What is the main goal when solving a linear inequality?</h3>
+				<label><input type="radio" name="q5" value="A">A. To graph inequalities</label>
+				<label><input type="radio" name="q5" value="B">B. To find the set of values that satisfy the inequality</label>
+				<label><input type="radio" name="q5" value="C">C. To find the slope of a line</label>
+				<label><input type="radio" name="q5" value="D">D. To solve exponential functions</label>
+			</div>
+			<div class="quiz-card">
+				<h3>6. The solution set of a linear inequality in two variables is:</h3>
+				<label><input type="radio" name="q6" value="A">A. Always circular</label>
+				<label><input type="radio" name="q6" value="B">B. A region (half-plane) bounded by a line</label>
+				<label><input type="radio" name="q6" value="C">C. An infinite plane</label>
+				<label><input type="radio" name="q6" value="D">D. A parabolic curve</label>
+			</div>
+			<div class="quiz-card">
+				<h3>7. Which property is used when you multiply or divide both sides of an inequality by a positive number?</h3>
+				<label><input type="radio" name="q7" value="A">A. Substitution Property</label>
+				<label><input type="radio" name="q7" value="B">B. Multiplication/Division Property</label>
+				<label><input type="radio" name="q7" value="C">C. Bisection Property</label>
+				<label><input type="radio" name="q7" value="D">D. Gaussian Elimination</label>
+			</div>
+			<div class="quiz-card">
+				<h3>8. How are linear inequalities represented on a graph?</h3>
+				<label><input type="radio" name="q8" value="A">A. By shading the region that satisfies the inequality</label>
+				<label><input type="radio" name="q8" value="B">B. By drawing only the boundary line</label>
+				<label><input type="radio" name="q8" value="C">C. By marking only the intercepts</label>
+				<label><input type="radio" name="q8" value="D">D. By drawing a circle</label>
+			</div>
+			<div class="quiz-card">
+				<h3>9. What distinguishes a linear inequality from a linear equation?</h3>
+				<label><input type="radio" name="q9" value="A">A. Linear inequalities have an equals sign</label>
+				<label><input type="radio" name="q9" value="B">B. Linear inequalities use inequality symbols and describe a range of solutions</label>
+				<label><input type="radio" name="q9" value="C">C. They are the same</label>
+				<label><input type="radio" name="q9" value="D">D. Neither uses constraints</label>
+			</div>
+			<div class="quiz-card">
+				<h3>10. Which is a real-life application of linear inequalities?</h3>
+				<label><input type="radio" name="q10" value="A">A. Drawing graphs for fun</label>
+				<label><input type="radio" name="q10" value="B">B. Setting budget limits or restrictions</label>
+				<label><input type="radio" name="q10" value="C">C. Balancing chemical equations</label>
+				<label><input type="radio" name="q10" value="D">D. Measuring temperature changes</label>
+			</div>
+			<!-- 10 More Multiple Choice Items -->
+			<div class="quiz-card">
+				<h3>11. Which of the following is NOT a property of inequalities?</h3>
+				<label><input type="radio" name="q11" value="A">A. Addition Property</label>
+				<label><input type="radio" name="q11" value="B">B. Multiplication Property</label>
+				<label><input type="radio" name="q11" value="C">C. Subtraction Property</label>
+				<label><input type="radio" name="q11" value="D">D. Exponential Property</label>
+			</div>
+			<div class="quiz-card">
+				<h3>12. What does the solution set of x &gt; 2 look like on a number line?</h3>
+				<label><input type="radio" name="q12" value="A">A. All numbers less than 2</label>
+				<label><input type="radio" name="q12" value="B">B. All numbers greater than 2</label>
+				<label><input type="radio" name="q12" value="C">C. Only 2</label>
+				<label><input type="radio" name="q12" value="D">D. All numbers less than or equal to 2</label>
+			</div>
+			<div class="quiz-card">
+				<h3>13. If y ≤ 7, which of the following is true?</h3>
+				<label><input type="radio" name="q13" value="A">A. y is greater than 7</label>
+				<label><input type="radio" name="q13" value="B">B. y is less than or equal to 7</label>
+				<label><input type="radio" name="q13" value="C">C. y is less than 0</label>
+				<label><input type="radio" name="q13" value="D">D. y is equal to 0</label>
+			</div>
+			<div class="quiz-card">
+				<h3>14. Which of the following is a feasible solution for x + y ≥ 10?</h3>
+				<label><input type="radio" name="q14" value="A">A. x = 3, y = 6</label>
+				<label><input type="radio" name="q14" value="B">B. x = 5, y = 5</label>
+				<label><input type="radio" name="q14" value="C">C. x = 2, y = 7</label>
+				<label><input type="radio" name="q14" value="D">D. x = 1, y = 8</label>
+			</div>
+			<div class="quiz-card">
+				<h3>15. What is the boundary line for the inequality 2x + 3y &lt; 6?</h3>
+				<label><input type="radio" name="q15" value="A">A. 2x + 3y = 6</label>
+				<label><input type="radio" name="q15" value="B">B. 2x + 3y &gt; 6</label>
+				<label><input type="radio" name="q15" value="C">C. 2x + 3y &lt; 0</label>
+				<label><input type="radio" name="q15" value="D">D. x + y = 6</label>
+			</div>
+			<div class="quiz-card">
+				<h3>16. What happens if you multiply both sides of x &lt; -4 by -1?</h3>
+				<label><input type="radio" name="q16" value="A">A. x &lt; 4</label>
+				<label><input type="radio" name="q16" value="B">B. x &gt; 4</label>
+				<label><input type="radio" name="q16" value="C">C. x &gt; -4</label>
+				<label><input type="radio" name="q16" value="D">D. x &lt; -4</label>
+			</div>
+			<div class="quiz-card">
+				<h3>17. Which of the following is the correct graph for y &ge; 2?</h3>
+				<label><input type="radio" name="q17" value="A">A. Shade below y = 2</label>
+				<label><input type="radio" name="q17" value="B">B. Shade above y = 2</label>
+				<label><input type="radio" name="q17" value="C">C. Shade only at y = 2</label>
+				<label><input type="radio" name="q17" value="D">D. Shade nowhere</label>
+			</div>
+			<div class="quiz-card">
+				<h3>18. Which is NOT a step in solving a linear inequality?</h3>
+				<label><input type="radio" name="q18" value="A">A. Isolate the variable</label>
+				<label><input type="radio" name="q18" value="B">B. Reverse the sign if multiplying/dividing by a negative</label>
+				<label><input type="radio" name="q18" value="C">C. Graph the solution</label>
+				<label><input type="radio" name="q18" value="D">D. Take the square root of both sides</label>
+			</div>
+			<div class="quiz-card">
+				<h3>19. Which of the following is a constraint in a linear inequality problem?</h3>
+				<label><input type="radio" name="q19" value="A">A. x + y ≤ 10</label>
+				<label><input type="radio" name="q19" value="B">B. y = mx + b</label>
+				<label><input type="radio" name="q19" value="C">C. x² + y² = 25</label>
+				<label><input type="radio" name="q19" value="D">D. x &gt; 0</label>
+			</div>
+			<div class="quiz-card">
+				<h3>20. What does the solution to a system of inequalities represent?</h3>
+				<label><input type="radio" name="q20" value="A">A. The intersection of all solution regions</label>
+				<label><input type="radio" name="q20" value="B">B. The union of all solution regions</label>
+				<label><input type="radio" name="q20" value="C">C. The product of all solution regions</label>
+				<label><input type="radio" name="q20" value="D">D. The sum of all solution regions</label>
+			</div>
+			<!-- 10 More Multiple Choice Items -->
+			<div class="quiz-card">
+				<h3>21. What is the first step in solving a linear inequality?</h3>
+				<label><input type="radio" name="q21" value="A">A. Isolate the variable</label>
+				<label><input type="radio" name="q21" value="B">B. Multiply by zero</label>
+				<label><input type="radio" name="q21" value="C">C. Take the square root</label>
+				<label><input type="radio" name="q21" value="D">D. Add random numbers</label>
+			</div>
+			<div class="quiz-card">
+				<h3>22. Which symbol means "greater than or equal to"?</h3>
+				<label><input type="radio" name="q22" value="A">A. &lt;</label>
+				<label><input type="radio" name="q22" value="B">B. &gt;</label>
+				<label><input type="radio" name="q22" value="C">C. ≥</label>
+				<label><input type="radio" name="q22" value="D">D. ≠</label>
+			</div>
+			<div class="quiz-card">
+				<h3>23. What error occurs if you forget to reverse the sign when dividing by a negative?</h3>
+				<label><input type="radio" name="q23" value="A">A. Misinterpreting the solution</label>
+				<label><input type="radio" name="q23" value="B">B. Getting the correct answer</label>
+				<label><input type="radio" name="q23" value="C">C. No error</label>
+				<label><input type="radio" name="q23" value="D">D. The solution is always zero</label>
+			</div>
+			<div class="quiz-card">
+				<h3>24. What does an open circle on a number line mean?</h3>
+				<label><input type="radio" name="q24" value="A">A. Endpoint is included</label>
+				<label><input type="radio" name="q24" value="B">B. Endpoint is excluded</label>
+				<label><input type="radio" name="q24" value="C">C. All numbers are included</label>
+				<label><input type="radio" name="q24" value="D">D. No solution</label>
+			</div>
+			<div class="quiz-card">
+				<h3>25. Which phrase in word problems usually means "≤"?</h3>
+				<label><input type="radio" name="q25" value="A">A. At least</label>
+				<label><input type="radio" name="q25" value="B">B. No more than</label>
+				<label><input type="radio" name="q25" value="C">C. Greater than</label>
+				<label><input type="radio" name="q25" value="D">D. Not equal to</label>
+			</div>
+			<button type="button" onclick="checkAnswers()">Submit Quiz</button>
+			<div id="result" class="result"></div>
+		</form>
+
+		<footer>
+			<p>&copy; 2025 Linear Inequalities Quiz | Designed with ❤️ for Mathematics in the Modern World</p>
+		</footer>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+		// Smooth scroll for Common Errors dropdown navigation
+		document.querySelectorAll('.dropdown-menu a[href^="commonerror.html#"]').forEach(function(link) {
+			link.addEventListener('click', function(e) {
+				const hash = this.getAttribute('href').split('#')[1];
+				const target = document.getElementById(hash);
+				if (target) {
+					e.preventDefault();
+					window.scrollTo({
+						top: target.getBoundingClientRect().top + window.scrollY - 90,
+						behavior: 'smooth'
+					});
+				}
+			});
+		});
+		function checkAnswers() {
+			const correct = {
+				q1:"B", q2:"D", q3:"B", q4:"B", q5:"B",
+				q6:"B", q7:"B", q8:"A", q9:"B", q10:"B",
+				q11:"D", q12:"B", q13:"B", q14:"B", q15:"A",
+				q16:"C", q17:"B", q18:"D", q19:"A", q20:"A",
+				q21:"A", q22:"C", q23:"A", q24:"B", q25:"B",
+				id1:"solution set", id2:"solving", id3:"addition/subtraction property", id4:"intersection", id5:"≤"
+			};
+			let score = 0;
+			let mcTotal = 25;
+			let mcScore = 0;
+			let idTotal = 5;
+			let idScore = 0;
+			const form = document.getElementById("quizForm");
+			// Multiple choice
+			for (let i = 1; i <= mcTotal; i++) {
+				const q = "q" + i;
+				if (form[q] && form[q].value === correct[q]) mcScore++;
+			}
+			// Identification
+			for (let i = 1; i <= idTotal; i++) {
+				const q = "id" + i;
+				if (form[q] && form[q].value.trim().toLowerCase() === correct[q]) idScore++;
+			}
+			score = mcScore + idScore;
+			const result = document.getElementById("result");
+			result.style.display = "block";
+			result.innerHTML = `
+				<b>Multiple Choice:</b> ${mcScore} / ${mcTotal}<br>
+				<b>Identification:</b> ${idScore} / ${idTotal}<br>
+				<b>Total Score:</b> ${score} out of ${mcTotal + idTotal} correct (${Math.round(score/(mcTotal+idTotal)*100)}%)
+			`;
+		}
+	</script>
+</body>
+</html>

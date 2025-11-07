@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Solving Linear Inequalities</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+	<style>
+		body {
+			background-color: #ffe4ef;
+			margin: 0;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			font-family: 'Quicksand', 'Poppins', Arial, sans-serif;
+			font-size: 1.08rem;
+			letter-spacing: 0.02em;
+			color: #222;
+			background-image: url('uploads/bgpattern.png');
+			background-size: 320px 320px;
+			background-repeat: repeat;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Quicksand', 'Poppins', Arial, sans-serif;
+			font-weight: 700;
+			letter-spacing: 0.04em;
+			color: #d72660;
+			text-shadow: 0 2px 8px #ffd6e6;
+		}
+		.navbar {
+			background: linear-gradient(90deg, #ffb6d5 0%, #ffe4ef 100%);
+			box-shadow: 0 2px 12px rgba(215, 38, 96, 0.08);
+			border-bottom: 2px solid #ffd6e6;
+		}
+		.navbar .navbar-brand, .navbar .nav-link, .navbar .dropdown-item {
+			color: #111 !important;
+			font-family: 'Quicksand', 'Poppins', Arial, sans-serif;
+			font-weight: 600;
+			letter-spacing: 0.03em;
+			font-size: 1.1rem;
+			transition: background 0.2s, color 0.2s;
+			border-radius: 8px;
+		}
+		.navbar .navbar-brand {
+			font-size: 1.35rem;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			color: #d72660 !important;
+			text-shadow: 0 2px 8px #ffd6e6;
+		}
+		.navbar .nav-link:hover, .navbar .dropdown-item:hover {
+			background-color: #ffd6e6 !important;
+			color: #d72660 !important;
+			box-shadow: 0 2px 8px #ffd6e6, 0 0 0 2px #d72660;
+			transform: scale(1.07);
+		}
+		.dropdown-header {
+			color: #d72660;
+			font-weight: 600;
+			font-size: 1rem;
+			letter-spacing: 0.03em;
+		}
+		.container, .container > .container {
+			background: linear-gradient(120deg, #fff6fa 80%, #ffe4ef 100%);
+			border-radius: 1rem;
+			box-shadow: 0 4px 24px rgba(215, 38, 96, 0.13);
+			border: 2px solid #ffd6e6;
+			margin-bottom: 24px;
+			transition: box-shadow 0.2s;
+		}
+		.container:hover {
+			box-shadow: 0 8px 32px #ffd6e6, 0 0 0 4px #d72660;
+			transform: translateY(-2px) scale(1.03);
+			border-color: #d72660;
+		}
+		img {
+			transition: box-shadow 0.2s, transform 0.2s;
+		}
+		img:hover {
+			box-shadow: 0 8px 32px #ffd6e6, 0 0 0 4px #d72660;
+			transform: scale(1.04);
+			border-color: #d72660;
+		}
+		@media (max-width: 980px) {
+			.container { padding: 8px 4px; }
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg shadow-sm fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="landingpage.html">
+				<img src="uploads/logo.png" alt="Logo" style="height: 80px; width: 80px; object-fit: contain;">
+				<span>LINEAR INEQUALITIES</span>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="home.html">Introduction</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="solvingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Solving
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="solvingDropdown">
+							<li><h6 class="dropdown-header">Basic Principles in Solving Inequalities</h6></li>
+							<li><a class="dropdown-item" href="#addition-subtraction">Addition and Subtraction Property</a></li>
+							<li><a class="dropdown-item" href="#multiplication-division">Multiplication and Division Property</a></li>
+							<li><a class="dropdown-item" href="#reverse-sign">Reversing the Inequality Sign When Multiplying or Dividing by a Negative Number</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="applicationpage.html">Applications</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="commonerror.html" id="errorsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Common Errors
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="errorsDropdown">
+							<li><a class="dropdown-item" href="commonerror.html">Misinterpreting the Inequality Symbol</a></li>
+							<li><a class="dropdown-item" href="commonerror.html">Forgetting to Reverse the Sign When Multiplying or Dividing</a></li>
+							<li><a class="dropdown-item" href="commonerror.html">Incorrect Graphical Representation</a></li>
+							<li><a class="dropdown-item" href="commonerror.html">Overlooking the Context in Word Problems</a></li>
+						</ul>
+					</li>
+                    <li class="nav-item">
+						<a class="nav-link" href="quiz.html">Quiz</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div style="height: 100px;"></div>
+
+	<div class="container py-4">
+		<h1 class="mb-4 text-center">Solving Linear Inequalities</h1>
+		<div class="row justify-content-center">
+			<div class="col-lg-8">
+
+				<!-- Addition and Subtraction Property Section -->
+				<div class="container mb-5 p-4 rounded shadow-sm" style="background: #fff6fa;" id="addition-subtraction">
+					<h3>Addition and Subtraction Property</h3>
+					<p>
+						The <b>Addition and Subtraction Property of Inequality</b> states that if you add or subtract the same number to both sides of an inequality, the inequality remains true.<br>
+						For any real numbers <b>a</b>, <b>b</b>, and <b>c</b>:
+					</p>
+					<ul>
+						<li>If <b>a &lt; b</b>, then <b>a + c &lt; b + c</b></li>
+						<li>If <b>a &gt; b</b>, then <b>a + c &gt; b + c</b></li>
+						<li>If <b>a &lt; b</b>, then <b>a - c &lt; b - c</b></li>
+						<li>If <b>a &gt; b</b>, then <b>a - c &gt; b - c</b></li>
+					</ul>
+					<div class="text-center my-3">
+						<img src="uploads/addition.jpg" alt="Addition and Subtraction Property" style="max-width: 350px; width: 100%; border-radius: 1rem;">
+					</div>
+					<div class="text-center my-3">
+						<img src= "uploads/subtraction.jpg" alt="Addition and Subtraction Example 2" style="max-width: 350px; width: 100%; border-radius: 1rem;">
+					</div>
+					<h4 class="mt-4">Step-by-Step Procedure</h4>
+					<ol>
+						<li>Identify the term to isolate (usually the variable).</li>
+						<li>Add or subtract the same number from both sides to move constants.</li>
+						<li>Simplify both sides.</li>
+						<li>Write the solution.</li>
+					</ol>
+					<h4 class="mt-4">Example 1</h4>
+					<p>
+						Solve: <span style="color:#d72660;font-weight:600;">x + 4 &lt; 10</span>
+					</p>
+					<ol>
+						<li>Subtract 4 from both sides: <span style="color:#d72660;">x + 4 - 4 &lt; 10 - 4</span></li>
+						<li>Simplify: <span style="color:#d72660;">x &lt; 6</span></li>
+					</ol>
+					<h4 class="mt-4">Example 2</h4>
+					<p>
+						Solve: <span style="color:#d72660;font-weight:600;">y - 7 &gt; 2</span>
+					</p>
+					<ol>
+						<li>Add 7 to both sides: <span style="color:#d72660;">y - 7 + 7 &gt; 2 + 7</span></li>
+						<li>Simplify: <span style="color:#d72660;">y &gt; 9</span></li>
+					</ol>
+					<h4 class="mt-4">Practice Problems</h4>
+					<p>
+						<b>Note:</b> The symbol <b>&le;</b> means "less than or equal to."
+					</p>
+					<ul>
+						<li>Solve: <b>m + 8 &lt; 15</b></li>
+						<li>Solve: <b>k - 3 &gt; 5</b></li>
+						<li>Solve: <b>p + 12 &le; 20</b></li>
+					</ul>
+					<p class="mt-3">
+						<b>Tip:</b> Always perform the same operation on both sides to keep the inequality balanced.
+					</p>
+				</div>
+
+				<!-- Multiplication and Division Property Section -->
+				<div class="container mb-5 p-4 rounded shadow-sm" style="background: #fff6fa;" id="multiplication-division">
+					<h3>Multiplication and Division Property</h3>
+					<p>
+						The <b>Multiplication and Division Property of Inequality</b> states that if you multiply or divide both sides of an inequality by the same positive number, the inequality remains true. If you multiply or divide by a negative number, you must reverse the inequality sign.
+					</p>
+					<ul>
+						<li>If <b>a &lt; b</b> and <b>c &gt; 0</b>, then <b>ac &lt; bc</b> and <b>a/c &lt; b/c</b></li>
+						<li>If <b>a &gt; b</b> and <b>c &gt; 0</b>, then <b>ac &gt; bc</b> and <b>a/c &gt; b/c</b></li>
+						<li>If <b>a &lt; b</b> and <b>c &lt; 0</b>, then <b>ac &gt; bc</b> and <b>a/c &gt; b/c</b> (sign reverses)</li>
+					</ul>
+					<div class="text-center my-3">
+						<img src="uploads/multi.jpg" alt="Multiplication and Division Property" style="max-width: 350px; width: 100%; border-radius: 1rem;">
+					</div>
+					<h4 class="mt-4">Step-by-Step Procedure</h4>
+					<ol>
+						<li>Isolate the variable term.</li>
+						<li>Multiply or divide both sides by the same number to solve for the variable.</li>
+						<li>If multiplying/dividing by a negative, reverse the inequality sign.</li>
+						<li>Simplify and write the solution.</li>
+					</ol>
+					<h4 class="mt-4">Example 1</h4>
+					<p>
+						Solve: <span style="color:#d72660;font-weight:600;">3x &gt; 12</span>
+					</p>
+					<ol>
+						<li>Divide both sides by 3: <span style="color:#d72660;">x &gt; 4</span></li>
+					</ol>
+					<h4 class="mt-4">Example 2 (Reverse Sign)</h4>
+					<p>
+						Solve: <span style="color:#d72660;font-weight:600;">-2y &lt; 8</span>
+					</p>
+					<ol>
+						<li>Divide both sides by -2 (reverse the sign): <span style="color:#d72660;">y &gt; -4</span></li>
+					</ol>
+					<h4 class="mt-4">Example 3</h4>
+					<p>
+						Solve: <span style="color:#d72660;font-weight:600;">x/5 &le; 3</span>
+					</p>
+					<ol>
+						<li>Multiply both sides by 5: <span style="color:#d72660;">x &le; 15</span></li>
+					</ol>
+					<h4 class="mt-4">Practice Problems</h4>
+					<p>
+						<b>Note:</b> The symbol <b>&ge;</b> means "greater than or equal to."
+					</p>
+					<ul>
+						<li>Solve: <b>4a &gt; 20</b></li>
+						<li>Solve: <b>-5b &lt; 25</b></li>
+						<li>Solve: <b>c/2 &ge; 7</b></li>
+					</ul>
+					<div class="text-center my-3">
+						<img src="uploads/div.png" alt="Multiplication/Division Example" style="max-width: 350px; width: 100%; border-radius: 1rem;">
+					</div>
+					<p class="mt-3">
+						<b>Tip:</b> Always check the sign of the number you are multiplying or dividing by!
+					</p>
+				</div>
+
+				<!-- Reversing the Inequality Sign Section -->
+				<div class="container mb-5 p-4 rounded shadow-sm" style="background: #fff6fa;" id="reverse-sign">
+					<h3>Reversing the Inequality Sign</h3>
+					<p>
+						When you multiply or divide both sides of an inequality by a negative number, you must reverse the direction of the inequality sign. This is because multiplying or dividing by a negative number changes the order of the numbers.
+					</p>
+					<h4 class="mt-4">Step-by-Step Procedure</h4>
+					<ol>
+						<li>Isolate the variable term.</li>
+						<li>Multiply or divide both sides by a negative number.</li>
+						<li>Reverse the inequality sign.</li>
+						<li>Simplify and write the solution.</li>
+					</ol>
+					<h4 class="mt-4">Example 1</h4>
+					<p>
+						Solve: <span style="color:#d72660;font-weight:600;">-4x &gt; 20</span>
+					</p>
+					<ol>
+						<li>Divide both sides by -4 (reverse the sign): <span style="color:#d72660;">x &lt; -5</span></li>
+					</ol>
+					<h4 class="mt-4">Example 2</h4>
+					<p>
+						Solve: <span style="color:#d72660;font-weight:600;">-x + 2 &lt; 7</span>
+					</p>
+					<ol>
+						<li>Subtract 2 from both sides: <span style="color:#d72660;">-x &lt; 5</span></li>
+						<li>Divide both sides by -1 (reverse the sign): <span style="color:#d72660;">x &gt; -5</span></li>
+					</ol>
+					<h4 class="mt-4">Example 3</h4>
+					<p>
+						Solve: <span style="color:#d72660;font-weight:600;">-6y &le; 18</span>
+					</p>
+					<ol>
+						<li>Divide both sides by -6 (reverse the sign): <span style="color:#d72660;">y &ge; -3</span></li>
+					</ol>
+					<h4 class="mt-4">Practice Problems</h4>
+					<p>
+						<b>Note:</b> The symbol <b>&ge;</b> means "greater than or equal to."
+					</p>
+					<ul>
+						<li>Solve: <b>-2m &gt; 10</b></li>
+						<li>Solve: <b>-n + 5 &lt; 1</b></li>
+						<li>Solve: <b>-3p &ge; 9</b></li>
+					</ul>
+					<p class="mt-3">
+						<b>Tip:</b> Reversing the sign is only necessary when multiplying or dividing by a negative number.
+					</p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- Bootstrap JS Bundle -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+		// Smooth scroll and keep dropdown open for internal links
+		document.querySelectorAll('.dropdown-menu a[href^="#"]').forEach(function(link) {
+			link.addEventListener('click', function(e) {
+				e.preventDefault();
+				const target = document.querySelector(this.getAttribute('href'));
+				if (target) {
+					window.scrollTo({
+						top: target.getBoundingClientRect().top + window.scrollY - 90,
+						behavior: 'smooth'
+					});
+				}
+			});
+		});
+	</script>
+</body>
+</html>
